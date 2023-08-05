@@ -1,7 +1,7 @@
-const getByIdFromApi = require("./getById/getByIdFromApi")
-const getByIdFromDb = require("./getById/getByIdFromDb")
+const getByIdFromApi = require("../controllers/getById/getByIdFromApi")
+const getByIdFromDb = require("../controllers/getById/getByIdFromDb")
 
-async function getPokemonById (req, res) {
+async function getPokemonByIdHandler (req, res) {
     const {idPokemon} = req.params
     let response
     if(Number(idPokemon)) {
@@ -15,4 +15,4 @@ async function getPokemonById (req, res) {
     return res.json(response)
 }
 
-module.exports = getPokemonById
+module.exports = getPokemonByIdHandler
