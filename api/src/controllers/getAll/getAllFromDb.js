@@ -2,7 +2,7 @@ const {Pokemon, Type} = require("../../db")
 
 async function getAllFromDb() {
     try {
-        const pokemonsFound = await Pokemon.findAll({
+        const pokemonsFound = await Pokemon.findAll({ // Se consulta la db por la totalidad de pokemons, incluyendo sus respectivos types asociados
             include: [{
                 model: Type,
                 attributes: ["name"],
@@ -11,7 +11,7 @@ async function getAllFromDb() {
                 }
             }]
         })
-        const pokemons = pokemonsFound.map((pokemon) => ({
+        const pokemons = pokemonsFound.map((pokemon) => ({ // Se crea un array de objetos, y se recupera en cada caso solo el name de la tabla types
             id: pokemon.id,
             name: pokemon.name,
             image: pokemon.image,
@@ -23,9 +23,9 @@ async function getAllFromDb() {
             weight: pokemon.weight,
             types: pokemon.types.map((type) => type.name)
         }))
-        return pokemons
-    } catch (error) {
-        return {err: {status: 500, msg: error.message}}
+        return pokemons // Devuelve el array con los pokemons
+    } catch (err) {
+        return {err: {status: 500, msg: err.message}} // Devuelve un error en caso de existir
     }
 }
 
