@@ -1,0 +1,365 @@
+[
+    {
+        "id": 1,
+        "name": "bulbasaur",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png",
+        "hp": 45,
+        "attack": 49,
+        "defense": 49,
+        "speed": 45,
+        "height": 7,
+        "weight": 69,
+        "types": [
+          "grass",
+          "poison"
+        ]
+      },
+      {
+        "id": 2,
+        "name": "ivysaur",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/2.png",
+        "hp": 60,
+        "attack": 62,
+        "defense": 63,
+        "speed": 60,
+        "height": 10,
+        "weight": 130,
+        "types": [
+          "grass",
+          "poison"
+        ]
+      },
+      {
+        "id": 3,
+        "name": "venusaur",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/3.png",
+        "hp": 80,
+        "attack": 82,
+        "defense": 83,
+        "speed": 80,
+        "height": 20,
+        "weight": 1000,
+        "types": [
+          "grass",
+          "poison"
+        ]
+      },
+      {
+        "id": 4,
+        "name": "charmander",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/4.png",
+        "hp": 39,
+        "attack": 52,
+        "defense": 43,
+        "speed": 65,
+        "height": 6,
+        "weight": 85,
+        "types": [
+          "fire"
+        ]
+      },
+      {
+        "id": 5,
+        "name": "charmeleon",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/5.png",
+        "hp": 58,
+        "attack": 64,
+        "defense": 58,
+        "speed": 80,
+        "height": 11,
+        "weight": 190,
+        "types": [
+          "fire"
+        ]
+      },
+      {
+        "id": 6,
+        "name": "charizard",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/6.png",
+        "hp": 78,
+        "attack": 84,
+        "defense": 78,
+        "speed": 100,
+        "height": 17,
+        "weight": 905,
+        "types": [
+          "fire",
+          "flying"
+        ]
+      },
+      {
+        "id": 7,
+        "name": "squirtle",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/7.png",
+        "hp": 44,
+        "attack": 48,
+        "defense": 65,
+        "speed": 43,
+        "height": 5,
+        "weight": 90,
+        "types": [
+          "water"
+        ]
+      },
+      {
+        "id": 8,
+        "name": "wartortle",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/8.png",
+        "hp": 59,
+        "attack": 63,
+        "defense": 80,
+        "speed": 58,
+        "height": 10,
+        "weight": 225,
+        "types": [
+          "water"
+        ]
+      },
+      {
+        "id": 9,
+        "name": "blastoise",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/9.png",
+        "hp": 79,
+        "attack": 83,
+        "defense": 100,
+        "speed": 78,
+        "height": 16,
+        "weight": 855,
+        "types": [
+          "water"
+        ]
+      },
+      {
+        "id": 10,
+        "name": "caterpie",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/10.png",
+        "hp": 45,
+        "attack": 30,
+        "defense": 35,
+        "speed": 45,
+        "height": 3,
+        "weight": 29,
+        "types": [
+          "bug"
+        ]
+      },
+      {
+        "id": 11,
+        "name": "metapod",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/11.png",
+        "hp": 50,
+        "attack": 20,
+        "defense": 55,
+        "speed": 30,
+        "height": 7,
+        "weight": 99,
+        "types": [
+          "bug"
+        ]
+      },
+      {
+        "id": 12,
+        "name": "butterfree",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/12.png",
+        "hp": 60,
+        "attack": 45,
+        "defense": 50,
+        "speed": 70,
+        "height": 11,
+        "weight": 320,
+        "types": [
+          "bug",
+          "flying"
+        ]
+      },
+      {
+        "id": 13,
+        "name": "weedle",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/13.png",
+        "hp": 40,
+        "attack": 35,
+        "defense": 30,
+        "speed": 50,
+        "height": 3,
+        "weight": 32,
+        "types": [
+          "bug",
+          "poison"
+        ]
+      },
+      {
+        "id": 14,
+        "name": "kakuna",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/14.png",
+        "hp": 45,
+        "attack": 25,
+        "defense": 50,
+        "speed": 35,
+        "height": 6,
+        "weight": 100,
+        "types": [
+          "bug",
+          "poison"
+        ]
+      },
+      {
+        "id": 15,
+        "name": "beedrill",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/15.png",
+        "hp": 65,
+        "attack": 90,
+        "defense": 40,
+        "speed": 75,
+        "height": 10,
+        "weight": 295,
+        "types": [
+          "bug",
+          "poison"
+        ]
+      },
+      {
+        "id": 16,
+        "name": "pidgey",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/16.png",
+        "hp": 40,
+        "attack": 45,
+        "defense": 40,
+        "speed": 56,
+        "height": 3,
+        "weight": 18,
+        "types": [
+          "normal",
+          "flying"
+        ]
+      },
+      {
+        "id": 17,
+        "name": "pidgeotto",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/17.png",
+        "hp": 63,
+        "attack": 60,
+        "defense": 55,
+        "speed": 71,
+        "height": 11,
+        "weight": 300,
+        "types": [
+          "normal",
+          "flying"
+        ]
+      },
+      {
+        "id": 18,
+        "name": "pidgeot",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/18.png",
+        "hp": 83,
+        "attack": 80,
+        "defense": 75,
+        "speed": 101,
+        "height": 15,
+        "weight": 395,
+        "types": [
+          "normal",
+          "flying"
+        ]
+      },
+      {
+        "id": 19,
+        "name": "rattata",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/19.png",
+        "hp": 30,
+        "attack": 56,
+        "defense": 35,
+        "speed": 72,
+        "height": 3,
+        "weight": 35,
+        "types": [
+          "normal"
+        ]
+      },
+      {
+        "id": 20,
+        "name": "raticate",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/20.png",
+        "hp": 55,
+        "attack": 81,
+        "defense": 60,
+        "speed": 97,
+        "height": 7,
+        "weight": 185,
+        "types": [
+          "normal"
+        ]
+      },
+      {
+        "id": 21,
+        "name": "spearow",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/21.png",
+        "hp": 40,
+        "attack": 60,
+        "defense": 30,
+        "speed": 70,
+        "height": 3,
+        "weight": 20,
+        "types": [
+          "normal",
+          "flying"
+        ]
+      },
+      {
+        "id": 22,
+        "name": "fearow",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/22.png",
+        "hp": 65,
+        "attack": 90,
+        "defense": 65,
+        "speed": 100,
+        "height": 12,
+        "weight": 380,
+        "types": [
+          "normal",
+          "flying"
+        ]
+      },
+      {
+        "id": 23,
+        "name": "ekans",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/23.png",
+        "hp": 35,
+        "attack": 60,
+        "defense": 44,
+        "speed": 55,
+        "height": 20,
+        "weight": 69,
+        "types": [
+          "poison"
+        ]
+      },
+      {
+        "id": 24,
+        "name": "arbok",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/24.png",
+        "hp": 60,
+        "attack": 95,
+        "defense": 69,
+        "speed": 80,
+        "height": 35,
+        "weight": 650,
+        "types": [
+          "poison"
+        ]
+      },
+      {
+        "id": 25,
+        "name": "pikachu",
+        "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/25.png",
+        "hp": 35,
+        "attack": 55,
+        "defense": 40,
+        "speed": 90,
+        "height": 4,
+        "weight": 60,
+        "types": [
+          "electric"
+        ]
+      }
+]
