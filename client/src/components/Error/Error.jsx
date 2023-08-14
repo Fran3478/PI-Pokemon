@@ -1,4 +1,4 @@
-import errorImg from "../../assets/error.png"
+import errorImg from "../../assets/error.gif"
 
 function Error ({error}) {
 
