@@ -1,4 +1,4 @@
-import { GET_POKEMONS, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, GET_TYPES, RESET, FILTER_TYPE, FILTER_FROM, SORT_NAME, SORT_ATTACK, SET_ERROR } from "../actions/actionTypes";
+import { GET_POKEMONS, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, GET_TYPES, RESET, FILTER_TYPE, FILTER_FROM, SORT_NAME, SORT_ATTACK, SET_ERROR, CLEAR_ERROR } from "../actions/actionTypes";
 
 const initialGlobalState = {
     allPokemons: [],
@@ -63,6 +63,8 @@ function rootReducer(state = initialGlobalState, action) {
             }
         case SET_ERROR:
             return {...state, error: action.payload}
+        case CLEAR_ERROR:
+            return {...state, error: null}
         case RESET:
             return {...state, pokemons: allPokemons, sortPokemon: allPokemons, filtered: false}
         default:

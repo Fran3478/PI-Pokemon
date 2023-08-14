@@ -8,6 +8,7 @@ const FILTER_FROM = 'FILTER_FROM'
 const SORT_NAME = 'SORT_NAME'
 const SORT_ATTACK = 'SORT_ATTACK'
 const SET_ERROR = 'SET_ERROR'
+const CLEAR_ERROR = 'CLEAR_ERROR'
 
 export {
     GET_POKEMONS,
@@ -19,5 +20,6 @@ export {
     FILTER_FROM,
     SORT_NAME,
     SORT_ATTACK,
-    SET_ERROR
+    SET_ERROR,
+    CLEAR_ERROR
 }

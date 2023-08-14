@@ -1,5 +1,5 @@
 //require ('dotenv').config()
-import {GET_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_BY_ID, GET_TYPES, RESET, FILTER_TYPE, FILTER_FROM, SORT_NAME, SORT_ATTACK, SET_ERROR } from './actionTypes'
+import {GET_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_BY_ID, GET_TYPES, RESET, FILTER_TYPE, FILTER_FROM, SORT_NAME, SORT_ATTACK, SET_ERROR, CLEAR_ERROR } from './actionTypes'
 import axios from 'axios'
 
 // const {API_POKEMONS, API_TYPES} = process.env
@@ -16,7 +16,7 @@ export const getAll = () => {
             })
             
         } catch (error) {
-            return dispatch(setError(error.response.data||'Something happend! 😧'))
+            return dispatch(setError(error))
         }
     }
 }
@@ -29,12 +29,13 @@ export const getByName = (name) => {
                     name: name
                 }
             })
+            console.log(API_POKEMONS + name)
             return dispatch({
                 type: GET_POKEMON_BY_NAME,
                 payload: data
             })
         } catch (error) {
-            alert(error.msg)
+            return dispatch(setError(error))
         }
     }
 }
@@ -48,7 +49,7 @@ export const getById = (id) => {
                 payload: data
             })
         } catch (error) {
-            alert(error.msg)
+            return dispatch(setError(error))
         }
     }
 }
@@ -62,7 +63,7 @@ export const getTypes = () => {
                 payload: data
             })
         } catch (error) {
-            console.log(error)
+            return dispatch(setError(error))
         }
     }
 }
@@ -102,6 +103,10 @@ export const reset = () => {
 export const setError = (error) => {
     return {
         type: SET_ERROR,
-        payload: error
+        payload: error.response.data.msg || error.response.data || 'Something happend! 😧'
     }
+}
+
+export const clearError = () => {
+    return {type: CLEAR_ERROR}
 }
