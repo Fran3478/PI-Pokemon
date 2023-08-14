@@ -1,5 +1,5 @@
 //require ('dotenv').config()
-import {GET_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_BY_ID, GET_TYPES, RESET, FILTER_TYPE, FILTER_FROM, SORT_NAME, SORT_ATTACK, SET_ERROR, CLEAR_ERROR } from './actionTypes'
+import {GET_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_BY_ID, GET_TYPES, POST_POKEMON, RESET, FILTER_TYPE, FILTER_FROM, SORT_NAME, SORT_ATTACK, SET_ERROR, CLEAR_ERROR } from './actionTypes'
 import axios from 'axios'
 
 // const {API_POKEMONS, API_TYPES} = process.env
@@ -60,6 +60,20 @@ export const getTypes = () => {
             const {data} = await axios(API_TYPES)
             return dispatch({
                 type: GET_TYPES,
+                payload: data
+            })
+        } catch (error) {
+            return dispatch(setError(error))
+        }
+    }
+}
+
+export const createPokemon = (pokemon) => {
+    return async (dispatch) => {
+        try {
+            const {data} = await axios.post(API_POKEMONS, pokemon)
+            return dispatch({
+                type: POST_POKEMON,
                 payload: data
             })
         } catch (error) {
