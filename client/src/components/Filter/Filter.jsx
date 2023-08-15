@@ -1,6 +1,6 @@
 import { useEffect} from "react";
 import { useDispatch, useSelector, connect } from "react-redux";
-import { getTypes, filterPokemon, clearError } from "../../redux/actions/actions";
+import { getTypes, filterPokemon, clearError, setCurrentPage } from "../../redux/actions/actions";
 
 function Filter ({filter}) {
     const dispatch = useDispatch()
@@ -11,12 +11,14 @@ function Filter ({filter}) {
         const {value} = event.target
         dispatch(clearError())
         dispatch(filterPokemon({...filter, type: value}))
+        dispatch(setCurrentPage(1))
     }
 
     function handleOrigin(event) {
         const {value} = event.target
         dispatch(clearError())
         dispatch(filterPokemon({...filter, origin: value}))
+        dispatch(setCurrentPage(1))
     }
 
     useEffect(() => {
