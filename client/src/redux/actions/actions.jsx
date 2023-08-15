@@ -88,13 +88,6 @@ export const filterPokemon = ({type, origin}) => {
     }
 }
 
-// export const filterByOrigin = (origin) => {
-//     return {
-//         type:FILTER_FROM,
-//         payload: origin
-//     }
-// }
-
 export const sortByName = (order) => {
     return {
         type: SORT_NAME,
@@ -110,6 +103,7 @@ export const sortByAttack = (order) => {
 }
 
 export const reset = () => {
+    console.log('reset')
     return {type: RESET}
 }
 

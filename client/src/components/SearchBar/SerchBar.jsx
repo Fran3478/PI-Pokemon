@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getByName } from "../../redux/actions/actions";
+import { getByName, reset } from "../../redux/actions/actions";
 import Filter from "../Filter/Filter";
+import Order from "../Order/order";
 
 function SearchBar({onSearch}) {
     const dispatch = useDispatch()
@@ -23,10 +24,16 @@ function SearchBar({onSearch}) {
             setError("No name Provided")
         }
     }
+    function handleReset(event) {
+        event.preventDefault()
+        dispatch(reset())
+    }
 
     return (
         <div>
+            <Order/>
             <Filter/>
+            <button onClick={handleReset} >Reset</button>
             <input type="search" placeholder="Pokemon's name..." onChange={handleChange} value={name}/>
             <button onClick={handleClick} >Search</button>
             {error ? <p>{error}</p> : null}

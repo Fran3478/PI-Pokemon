@@ -16,7 +16,7 @@ const initialState = {
     },
     pokemon: {},
     successfullyCreated: null,
-    error: null
+    error: ''
 }
 
 function rootReducer(state = initialState, action) {
@@ -44,7 +44,10 @@ function rootReducer(state = initialState, action) {
             } else {
                 filteredPokemons = state.sortedPokemons
             }
-            return {...state, pokemons: filteredPokemons, filter: {type, origin}, filtered: true}
+            if(filteredPokemons.length) {
+                return {...state, pokemons: filteredPokemons, filter: {type, origin}, filtered: true}
+            }
+            return {...state, pokemons: state.sortedPokemons, filter: {type, origin}, filtered: false, error: "Ups, No Matches"}
         case SORT_NAME:
             function sortByName(pokemons) {
                 return pokemons.slice().sort((a, b) => {
@@ -60,32 +63,49 @@ function rootReducer(state = initialState, action) {
                 })
             }
             const sortedByName = sortByName(state.sortedPokemons)
+            let sortedByNameFiltered
             if(state.filtered){
-                const sortedByNameFiltered = sortByName(state.pokemons)
-                return {...state, pokemons: sortedByNameFiltered, sortPokemon: sortedByName}
+                sortedByNameFiltered = sortByName(state.pokemons)
             } else {
-                return {...state, pokemons: sortedByName, sortPokemon: sortedByName}
+                sortedByNameFiltered = sortedByName
             }
+            return {...state, pokemons: sortedByNameFiltered, sortedPokemons: sortedByName, order: {name: action.payload, attack: ''}}
         case SORT_ATTACK:
             function sortByAttack(pokemons) {
                 return pokemons.slice().sort((a, b) => {
-                    if(action.payload === 'ASC') return (a - b)
-                    return (b - a)
+                    if(action.payload === 'ASC') {
+                        return (a.attack - b.attack)
+                    }
+                    return (b.attack - a.attack)
                 })
             }
             const sortedByAttack = sortByAttack(state.sortedPokemons)
+            let sortedByAttackFiltered
             if(state.filtered){
-                const sortedByAttackFiltered = sortByAttack(state.pokemons)
-                return {...state, pokemons: sortedByAttackFiltered, sortPokemon: sortedByAttack}
+                sortedByAttackFiltered = sortByAttack(state.pokemons)
             } else {
-                return {...state, pokemons: sortedByAttack, sortPokemon: sortedByAttack}
+                sortedByAttackFiltered = sortedByAttack
             }
+            return {...state, pokemons: sortedByAttackFiltered, sortedPokemons: sortedByAttack, order: {name: '', attack: action.payload}}
         case SET_ERROR:
             return {...state, error: action.payload}
         case CLEAR_ERROR:
-            return {...state, error: null}
+            return {...state, error: ''}
         case RESET:
-            return {...state, pokemons: allPokemons, sortPokemon: allPokemons, filtered: false}
+            return {
+                ...state, 
+                pokemons: state.allPokemons, 
+                sortedPokemons: state.allPokemons, 
+                filtered: false, 
+                filter: {
+                    type: '',
+                    origin: ''
+                },
+                order: {
+                    name: '',
+                    attack: ''
+                }
+            }
         default:
             return {...state}
     }

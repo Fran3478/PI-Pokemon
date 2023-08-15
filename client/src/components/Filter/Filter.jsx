@@ -1,24 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect} from "react";
 import { useDispatch, useSelector, connect } from "react-redux";
-import { getTypes, filterPokemon } from "../../redux/actions/actions";
+import { getTypes, filterPokemon, clearError } from "../../redux/actions/actions";
 
 function Filter ({filter}) {
     const dispatch = useDispatch()
     const types = useSelector((state) => state.types)
+    const loadedTypes = useSelector((state) => state.types.length > 0)
     
     function handleType(event) {
         const {value} = event.target
+        dispatch(clearError())
         dispatch(filterPokemon({...filter, type: value}))
     }
 
     function handleOrigin(event) {
         const {value} = event.target
+        dispatch(clearError())
         dispatch(filterPokemon({...filter, origin: value}))
     }
 
     useEffect(() => {
-        dispatch(getTypes())
-    }, [dispatch])
+        if(!loadedTypes) {
+            dispatch(getTypes())
+        }
+        
+    }, [dispatch, loadedTypes])
 
     return (
         <div>

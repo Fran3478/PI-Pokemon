@@ -9,6 +9,7 @@ import {validators, validateAll} from "../../validators/validators"
 function Form () {
     const dispatch = useDispatch()
     const types = useSelector((state) => state.types)
+    const loadedTypes = useSelector((state) => state.types.length > 0)
     const error = useSelector((state) => state.error)
     const successfullyCreated = useSelector((state) => state.successfullyCreated)
     const [loading, setLoading] = useState(true)
@@ -57,9 +58,14 @@ function Form () {
     }
 
     useEffect(() => {
-        dispatch(getTypes())
-        .then(setLoading(false))
-    }, [dispatch])
+        if(!loadedTypes) {
+            dispatch(getTypes())
+            .then(setLoading(false))
+        } else {
+            setLoading(false)
+        }
+        
+    }, [dispatch, loadedTypes])
 
     return (
         <div>
