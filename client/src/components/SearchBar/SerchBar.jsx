@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getByName } from "../../redux/actions/actions";
+import Filter from "../Filter/Filter";
 
 function SearchBar({onSearch}) {
     const dispatch = useDispatch()
@@ -25,6 +26,7 @@ function SearchBar({onSearch}) {
 
     return (
         <div>
+            <Filter/>
             <input type="search" placeholder="Pokemon's name..." onChange={handleChange} value={name}/>
             <button onClick={handleClick} >Search</button>
             {error ? <p>{error}</p> : null}

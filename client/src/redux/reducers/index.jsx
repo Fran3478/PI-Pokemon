@@ -1,21 +1,29 @@
-import { GET_POKEMONS, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, GET_TYPES, POST_POKEMON, RESET, FILTER_TYPE, FILTER_FROM, SORT_NAME, SORT_ATTACK, SET_ERROR, CLEAR_ERROR } from "../actions/actionTypes";
+import { GET_POKEMONS, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, GET_TYPES, POST_POKEMON, RESET, FILTER, SORT_NAME, SORT_ATTACK, SET_ERROR, CLEAR_ERROR } from "../actions/actionTypes";
 
-const initialGlobalState = {
+const initialState = {
     allPokemons: [],
     pokemons: [],
     types: [],
     sortedPokemons: [],
     filtered: false,
+    filter: {
+        type: '',
+        origin: ''
+    },
+    order: {
+        name: '',
+        attack: ''
+    },
     pokemon: {},
     successfullyCreated: null,
     error: null
 }
 
-function rootReducer(state = initialGlobalState, action) {
+function rootReducer(state = initialState, action) {
 
     switch (action.type) {
         case GET_POKEMONS:
-            return {...state, allPokemons: action.payload, pokemons: action.payload}
+            return {...state, allPokemons: action.payload, pokemons: action.payload, sortedPokemons: action.payload}
         case GET_POKEMON_BY_ID:
             return {...state, pokemon: action.payload}
         case GET_POKEMON_BY_NAME:
@@ -24,12 +32,19 @@ function rootReducer(state = initialGlobalState, action) {
             return {...state, types: action.payload}
         case POST_POKEMON:
             return {...state, successfullyCreated: action.payload}
-        case FILTER_TYPE:
-            const filteredByType = state.sortedPokemons.filter((pokemon) => pokemon.types.includes(action.payload))
-            return {...state, pokemons: filteredByType, filtered: true}
-        case FILTER_FROM:
-            const filteredByOrigin = state.sortedPokemons.filter((pokemon) => action.payload === 'DB' ? !Number(pokemon.id) : Number(pokemon.id))
-            return {...state, pokemons: filteredByOrigin, filtered: true}
+        case FILTER:
+            const {type, origin} = action.payload
+            let filteredPokemons = []
+            if(type && origin) {
+                filteredPokemons = state.sortedPokemons.filter((pokemon) => pokemon.types.includes(type)).filter((pokemon) => origin === 'DB' ? !Number(pokemon.id) : Number(pokemon.id))
+            } else if(type) {
+                filteredPokemons = state.sortedPokemons.filter((pokemon) => pokemon.types.includes(type))
+            } else if(origin) {
+                filteredPokemons = state.sortedPokemons.filter((pokemon) => origin === 'DB' ? !Number(pokemon.id) : Number(pokemon.id))
+            } else {
+                filteredPokemons = state.sortedPokemons
+            }
+            return {...state, pokemons: filteredPokemons, filter: {type, origin}, filtered: true}
         case SORT_NAME:
             function sortByName(pokemons) {
                 return pokemons.slice().sort((a, b) => {

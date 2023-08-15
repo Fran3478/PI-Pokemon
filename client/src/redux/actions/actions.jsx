@@ -1,5 +1,5 @@
 //require ('dotenv').config()
-import {GET_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_BY_ID, GET_TYPES, POST_POKEMON, RESET, FILTER_TYPE, FILTER_FROM, SORT_NAME, SORT_ATTACK, SET_ERROR, CLEAR_ERROR } from './actionTypes'
+import {GET_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_BY_ID, GET_TYPES, POST_POKEMON, RESET, FILTER, SORT_NAME, SORT_ATTACK, SET_ERROR, CLEAR_ERROR } from './actionTypes'
 import axios from 'axios'
 
 // const {API_POKEMONS, API_TYPES} = process.env
@@ -29,7 +29,6 @@ export const getByName = (name) => {
                     name: name
                 }
             })
-            console.log(API_POKEMONS + name)
             return dispatch({
                 type: GET_POKEMON_BY_NAME,
                 payload: data
@@ -82,19 +81,19 @@ export const createPokemon = (pokemon) => {
     }
 }
 
-export const filterByType = (types) => {
+export const filterPokemon = ({type, origin}) => {
     return {
-        type: FILTER_TYPE,
-        payload: types
+        type: FILTER,
+        payload: {type, origin}
     }
 }
 
-export const filterByOrigin = (origin) => {
-    return {
-        type:FILTER_FROM,
-        payload: origin
-    }
-}
+// export const filterByOrigin = (origin) => {
+//     return {
+//         type:FILTER_FROM,
+//         payload: origin
+//     }
+// }
 
 export const sortByName = (order) => {
     return {
