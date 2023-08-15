@@ -1,0 +1,20 @@
+.container {
+    height: 100vh;
+    background-image: url('../../assets/back.jpg');
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.nav-home {
+    position: relative
+}
+.img-home {
+    border-radius: 50%;
+    
+}
+.nav-home:hover {
+    filter: drop-shadow(0 0 2em #871414aa);
+  }

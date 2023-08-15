@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getById } from "../../redux/actions/actions";
+import {typeImg} from '../../imgImport/typeImg'
 
 function Detail() {
     const {id} = useParams()
@@ -32,9 +33,10 @@ function Detail() {
                             {pokemon.speed ? <p>Speed: {pokemon.speed}</p> : null}
                             {pokemon.height ? <p>Height: {pokemon.height}</p> : null}
                             {pokemon.weight ? <p>Weight: {pokemon.weight}</p> : null}
-                            <p>
-                                Types: {pokemon.types.map(type => <span key={type}>{type} </span>)}
-                            </p>
+                            <div>
+                                <p>Types:</p>
+                                {pokemon.types.map(type => <img key={type} src={typeImg(type)}/>)}
+                            </div>
                         </div>
                     </div>
                 </div>
