@@ -1,0 +1,29 @@
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    display: block;
+    background-color: #0074D9; /* Color de fondo azul */
+    color: #fff; /* Color del texto */
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px; /* Espaciado entre los botones */
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Color de fondo azul oscuro al pasar el mouse */
+}

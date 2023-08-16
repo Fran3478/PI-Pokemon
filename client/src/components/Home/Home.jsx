@@ -5,6 +5,8 @@ import {connect, useDispatch, useSelector} from 'react-redux'
 import { clearError, getAll, setCurrentPage } from '../../redux/actions/actions'
 import { useState, useEffect } from "react"
 import SearchBar from "../SearchBar/SerchBar"
+import style from "./Home.module.css"
+import Loading from "../Loading/Loading"
 
 function Home({pokemons, error, currentPage}) {
     const [loading, setLoading] = useState(true)
@@ -37,17 +39,18 @@ function Home({pokemons, error, currentPage}) {
     }, [dispatch, loadedPokemons, error])
     
     return(
-        <div>
-            <SearchBar onSearch={(pokemon) => setSearchedPokemon(pokemon)} />
-            <Pagination pokemonsPerPage={pokemonsPerPage} pokemonAmount={pokemons.length} pagination={pagination}/>
-            <p>Pokemons: </p>
+        <div className={style.container}>
+            <div className={style['search-pagination-container']}>
+                <SearchBar onSearch={(pokemon) => setSearchedPokemon(pokemon)} />
+                <Pagination pokemonsPerPage={pokemonsPerPage} pokemonAmount={pokemons.length} pagination={pagination}/>
+            </div>
             {loading ? 
-                <p>Loading...</p> : 
+                <Loading/> : 
                 error ? 
                 <Error error={error}/> : 
                 searchedPokemon ? 
-                <Cards pokemons={[searchedPokemon]}/> : 
-                <Cards pokemons={currentPokemons}/>
+                    <Cards pokemons={[searchedPokemon]}/> : 
+                    <Cards pokemons={currentPokemons}/>
             }
             {searchedPokemon ? 
                 <button onClick={showAll}>Show All Pokemons</button> : 

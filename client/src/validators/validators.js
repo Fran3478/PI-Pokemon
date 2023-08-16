@@ -6,16 +6,14 @@ export function validators(element, name) {
         return 'Invalid Url!!'
     }
 
-    if(Number(element) && element > 999 && element < 0) {
-        return "The value must be between 0 and 999"
+    if(!isNaN(element) && (element > 999 || element < 0)) {
+        return `The ${name} value must be between 0 and 999`
     }
 
     if(Array.isArray(element) && !element.length) {
-        return 'At least one must be selected!'
-    } else if(Number(element) && element < 0){
-        return "The value must be 0 at least or more!"
-    } else if(!element) {
-        return "The field can't be empty!"
+        return 'At least one type must be selected!'
+    } else if(isNaN(element) && !element) {
+        return `The field ${name} can't be empty!`
     }
 }
 

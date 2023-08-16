@@ -1,6 +1,7 @@
 import { useEffect} from "react";
 import { useDispatch, useSelector, connect } from "react-redux";
 import { getTypes, filterPokemon, clearError, setCurrentPage } from "../../redux/actions/actions";
+import style from "./Filter.module.css"
 
 function Filter ({filter}) {
     const dispatch = useDispatch()
@@ -29,10 +30,10 @@ function Filter ({filter}) {
     }, [dispatch, loadedTypes])
 
     return (
-        <div>
-            <p>Filter By:</p>
+        <div className={style.container}>
+            <h3>Filter By:</h3>
             <label>Type</label>
-            <div>
+            <div className={style['select-container']}>
                 <select onChange={handleType}>
                     <option value={''} >All Types</option>
                     {types.map(type => (
@@ -41,7 +42,7 @@ function Filter ({filter}) {
                 </select>
             </div>
             <label>Origin</label>
-            <div>
+            <div className={style['select-container']}>
                 <select onChange={handleOrigin}>
                     <option value={''} >All Pokemons</option>
                     <option value={'API'} >API Pokemons</option>

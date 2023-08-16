@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FF4136;
+    padding: 0 10rem;
+}
+.container-button {
+    width: 20vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    text-decoration: none;
+    background-color: #0074D9;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    padding: 1rem;
+}
+
+
+.button:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.logo {
+    width: 13rem;
+    margin-left: auto;
+}

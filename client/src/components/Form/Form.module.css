@@ -1,0 +1,113 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 20px;
+  }  
+  
+label {
+    margin-bottom: 5px;
+}
+  
+input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.error-container {
+    align-items: center;
+}
+
+.error {
+    width: 25%;
+    border-radius: 1.5rem;
+    background-color: rgba(255, 0, 0, 0.5);
+    margin: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+}
+
+.form-type-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.form-type-buttons button {
+    background-color: #0074D9;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-transform:uppercase;
+    transition: background-color 0.2s;
+}
+
+.pressed {
+    background-color: gray;
+}
+
+.form-type-buttons button:hover {
+    background-color: #0056b3;
+}
+  
+.form-button {
+    margin: 7rem auto;
+    background-color: #0074D9;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+  
+.form-button:hover {
+    background-color: #0056b3;
+}
+
+.form-success {
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Colocar el Success por encima de los demás elementos */
+}
+
+.form-success button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    background-color: #28a745;
+}
+
+.form-success button:hover {
+    background-color: #218838;
+}
+.form-input-column {
+    margin-right: 10rem;
+    text-align:end;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 3fr;
+    grid-gap: 10px;
+}
+
+.span-type {
+    width: 4rem;
+    border-radius: 1.5rem;
+    background-color: rgba(95, 108, 220, 0.5);
+    margin: 5px;
+    padding: 0.5rem;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    text-transform:lowercase;
+}

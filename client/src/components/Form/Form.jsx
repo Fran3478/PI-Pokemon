@@ -3,18 +3,19 @@ import Error from "../Error/Error"
 import Success from "../Success/Success"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getTypes, createPokemon  } from "../../redux/actions/actions"
+import { getTypes, createPokemon, clearError  } from "../../redux/actions/actions"
 import {validators, validateAll} from "../../validators/validators"
+import style from "./Form.module.css"
+import Loading from "../Loading/Loading"
 
 function Form () {
     const dispatch = useDispatch()
     const types = useSelector((state) => state.types)
     const loadedTypes = useSelector((state) => state.types.length > 0)
     const error = useSelector((state) => state.error)
-    const successfullyCreated = useSelector((state) => state.successfullyCreated)
+    const [success, setSuccess] = useState('')
     const [loading, setLoading] = useState(true)
     const [errorInput, setErrorInput] = useState({})
-    const [errorSubmit, setErrorSubmit] = useState(false)
     const [createdPokemon, setCreactedPokemon] = useState({
         name: '',
         image:'',
@@ -27,11 +28,9 @@ function Form () {
         types: []
     })
     function handleChanges(event) {
-        event.preventDefault()
         const {name, value} = event.target
         setCreactedPokemon({...createdPokemon, [name]: value})
         setErrorInput({...errorInput, [name]: validators(value, name)})
-        console.log(errorInput)
     }
     function handleType(event) {
         event.preventDefault()
@@ -43,17 +42,21 @@ function Form () {
             setCreactedPokemon({...createdPokemon, types: createdPokemon.types.filter((type) => type !== name)})
             setErrorInput({...errorInput, types: validators(createdPokemon.types.filter((type) => type !== name), "types")})
         }
-        console.log(errorInput)
     }
 
     function handleSubmit(event) {
         event.preventDefault()
         const err = validateAll(createdPokemon)
+        dispatch(clearError())
         if(Object.keys(err).length) {
             setErrorInput(err)
-            setErrorSubmit(true)
         } else {
             dispatch(createPokemon(createdPokemon))
+            .then((response) => {
+                if(response.payload){
+                    setSuccess(response.payload.msg)
+                }
+            })
         }
     }
 
@@ -68,45 +71,114 @@ function Form () {
     }, [dispatch, loadedTypes])
 
     return (
-        <div>
+        <div className={style["form-container"]}>
             <form>
-                <label>Name: </label>
-                <input type="text" name="name" value={createdPokemon.name} onChange={handleChanges}/>
-                {errorInput.name ? <span>{errorInput.name}</span> : null}
-                <label>Image: </label>
-                <input type="text" name="image" value={createdPokemon.image} onChange={handleChanges}/>
-                {errorInput.image ? <span>{errorInput.image}</span> : null}
-                <label>Hit Points: </label>
-                <input type="number" name="hp" value={createdPokemon.hp} onChange={handleChanges}/>
-                {errorInput.hp ? <span>{errorInput.hp}</span> : null}
-                <label>Attack: </label>
-                <input type="number" name="attack" value={createdPokemon.attack} onChange={handleChanges}/>
-                {errorInput.attack ? <span>{errorInput.attack}</span> : null}
-                <label>Defense: </label>
-                <input type="number" name="defense" value={createdPokemon.defense} onChange={handleChanges}/>
-                {errorInput.defense ? <span>{errorInput.defense}</span> : null}
-                <label>Speed: </label>
-                <input type="number" name="speed" value={createdPokemon.speed} onChange={handleChanges}/>
-                {errorInput.speed ? <span>{errorInput.speed}</span> : null}
-                <label>Weight: </label>
-                <input type="number" name="weight" value={createdPokemon.weight} onChange={handleChanges}/>
-                {errorInput.weight ? <span>{errorInput.weight}</span> : null}
-                <label>Height: </label>
-                <input type="number" name="height" value={createdPokemon.height} onChange={handleChanges}/>
-                {errorInput.height ? <span>{errorInput.height}</span> : null}
-                <label>Types: </label>
-                {errorInput.types ? <span>{errorInput.types}</span> : null}
-                {loading ? <p>Loading...</p> : types.map(type => <button key={type.id} name={type.name} onClick={handleType}>{type.name}</button>)}
-                <button onClick={handleSubmit}>Create Pokemon</button>
+                <div className={`${style["form-container"]} ${style["form-input-column"]}`}>
+                    <label>Name: </label>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        value={createdPokemon.name} 
+                        placeholder="Pokemon's Name..."  
+                        onChange={handleChanges}
+                    />
+                    <label>Image: </label>
+                    <input 
+                        type="text" 
+                        name="image" 
+                        value={createdPokemon.image} 
+                        placeholder="Image Url..." 
+                        onChange={handleChanges}
+                    />
+                    <label>Hit Points: </label>
+                    <input
+                        type="number" 
+                        name="hp" 
+                        value={createdPokemon.hp} 
+                        onChange={handleChanges}
+                    />
+                    <label>Attack: </label>
+                    <input 
+                        type="number" 
+                        name="attack" 
+                        value={createdPokemon.attack}
+                        onChange={handleChanges}
+                    />
+                    <label>Defense: </label>
+                    <input 
+                        type="number" 
+                        name="defense" 
+                        value={createdPokemon.defense} 
+                        onChange={handleChanges}
+                    />
+                    <label>Speed: </label>
+                    <input 
+                        type="number" 
+                        name="speed" 
+                        value={createdPokemon.speed} 
+                        onChange={handleChanges}
+                    />
+                    <label>Weight: </label>
+                    <input 
+                        type="number" 
+                        name="weight" 
+                        value={createdPokemon.weight} 
+                        onChange={handleChanges}
+                    />
+                    <label>Height: </label>
+                    <input 
+                        type="number" 
+                        name="height" 
+                        value={createdPokemon.height}
+                        onChange={handleChanges}
+                    />
+                </div>
+
+                <div className={style['error-container']}>
+                    {errorInput.name ? 
+                        <p className={style["error"]}>{errorInput.name}</p> : 
+                    null}
+                    {errorInput.image ? 
+                        <p className={style["error"]}>{errorInput.image}</p> : 
+                    null}
+                    {errorInput.hp ? 
+                        <p className={style["error"]}>{errorInput.hp}</p> :
+                    null}
+                    {errorInput.attack ? 
+                        <p className={style["error"]}>{errorInput.attack}</p> : 
+                    null}
+                    {errorInput.defense ? 
+                        <p className={style["error"]}>{errorInput.defense}</p> : 
+                    null}
+                    {errorInput.speed ? 
+                        <p className={style["error"]}>{errorInput.speed}</p> : 
+                    null}
+                    {errorInput.weight ? 
+                        <p className={style["error"]}>{errorInput.weight}</p> : 
+                    null}
+                    {errorInput.height ? 
+                        <p className={style["error"]}>{errorInput.height}</p> : 
+                    null}
+                    {errorInput.types ? 
+                        <p className={style["error"]}>{errorInput.types}</p> : 
+                    null}
+                </div>
+                
+                <label>Types: </label> {createdPokemon.types.map(type => (<span key={`span-${type}`} className={style['span-type']}>{type}</span>))}
+                <div className={style["form-type-buttons"]}>
+                    {loading ? <Loading/> : types.map(type => <button key={type.id} name={type.name} onClick={handleType}>{type.name}</button>)}
+                    
+                </div>
+                <button type="submit" className={style["form-button"]} onClick={handleSubmit}>Create Pokemon</button>
             </form>
             {
                 error ? 
                     <Error error={error}/> : 
-                    successfullyCreated ?
-                        <div>
-                            <Success success={successfullyCreated.msg}/>
+                    success ?
+                        <div className={style["form-success"]}>
+                            <Success success={success}/>
                             <NavLink to={"/pokemons"}>
-                                <button>Ok!</button>
+                                <button className={style["form-button"]}>Ok!</button>
                             </NavLink>
                         </div> : null
             }

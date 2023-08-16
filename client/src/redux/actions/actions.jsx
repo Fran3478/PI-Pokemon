@@ -1,5 +1,5 @@
 //require ('dotenv').config()
-import {GET_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_BY_ID, GET_TYPES, POST_POKEMON, RESET, FILTER, SORT_NAME, SORT_ATTACK, SET_CURRENT_PAGE, SET_ERROR, CLEAR_ERROR } from './actionTypes'
+import {GET_POKEMONS, GET_POKEMON_BY_NAME, GET_POKEMON_BY_ID, GET_TYPES, POST_POKEMON, RESET, FILTER, SORT_NAME, SORT_ATTACK, SET_CURRENT_PAGE, SET_ERROR, CLEAR_ERROR, CLEAR_SUCCES } from './actionTypes'
 import axios from 'axios'
 
 // const {API_POKEMONS, API_TYPES} = process.env
@@ -123,4 +123,8 @@ export const setError = (error) => {
 
 export const clearError = () => {
     return {type: CLEAR_ERROR}
+}
+
+export const clearSucces = () => {
+    return {type: CLEAR_SUCCES}
 }

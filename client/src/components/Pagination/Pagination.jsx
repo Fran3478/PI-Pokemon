@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import style from "./Pagination.module.css"
 
 
 function Pagination({pokemonsPerPage, pokemonAmount, pagination}) {

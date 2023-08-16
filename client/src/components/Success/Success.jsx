@@ -1,10 +1,10 @@
 import successImg from "../../assets/success.gif"
-import { NavLink } from "react-router-dom"
+import style from "./Success.module.css"
 
 function Success ({success}) {
 
     return (
-        <div>
+        <div className={style.container}>
             <img src={successImg}/>
             <p>{success}</p>
         </div>

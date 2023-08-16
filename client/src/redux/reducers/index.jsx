@@ -1,4 +1,4 @@
-import { GET_POKEMONS, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, GET_TYPES, POST_POKEMON, RESET, FILTER, SORT_NAME, SORT_ATTACK, SET_CURRENT_PAGE, SET_ERROR, CLEAR_ERROR } from "../actions/actionTypes";
+import { GET_POKEMONS, GET_POKEMON_BY_ID, GET_POKEMON_BY_NAME, GET_TYPES, POST_POKEMON, RESET, FILTER, SORT_NAME, SORT_ATTACK, SET_CURRENT_PAGE, SET_ERROR, CLEAR_ERROR, CLEAR_SUCCES } from "../actions/actionTypes";
 
 const initialState = {
     allPokemons: [],
@@ -94,6 +94,8 @@ function rootReducer(state = initialState, action) {
             return {...state, error: action.payload}
         case CLEAR_ERROR:
             return {...state, error: ''}
+        case CLEAR_SUCCES:
+            return {...state, successfullyCreated: null}
         case RESET:
             return {
                 ...state, 

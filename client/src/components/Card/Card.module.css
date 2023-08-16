@@ -1,0 +1,59 @@
+.container {
+    text-transform: uppercase;
+    border: 2px solid rgba(255, 0, 0, 0.671);
+    border-radius: 8px;
+    padding: 10px;
+    background-color: transparent;
+    text-align: center;
+    transition: transform 0.2s;
+    width: 20rem;
+    margin: 0 10px 20px 10px;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+.container p {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.container p.name {
+    display: inline-block;
+    background-color: rgba(255, 0, 0, 0.671);
+    color: #ffffff;
+    border-radius: 1rem;
+    padding: 5px 10px;
+}
+
+.container img {
+    max-width: 80%;
+    height: auto;
+}
+
+.container a {
+    text-decoration: none;
+    color: #333;
+}
+
+.container a:hover {
+    color: #871414;
+}
+
+.type-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.type {
+    width: 7rem;
+    height: auto;
+    margin: 0 5px;
+}
+
+.pokemonImg {
+    min-width: 19rem;
+}

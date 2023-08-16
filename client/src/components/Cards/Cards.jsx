@@ -1,9 +1,10 @@
 import Card from "../Card/Card"
+import style from "./Cards.module.css"
 
 function Cards(props) {
 
     return (
-        <div>
+        <div className={style.container}>
             {props.pokemons.map(pokemon =>
                 <Card
                     key={pokemon.id}

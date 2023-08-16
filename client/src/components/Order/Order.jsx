@@ -1,5 +1,6 @@
 import { useDispatch, connect } from "react-redux"
 import { sortByName, sortByAttack } from "../../redux/actions/actions"
+import style from "./Order.module.css"
 
 function Order({order}) {
     const dispatch = useDispatch()
@@ -16,14 +17,14 @@ function Order({order}) {
     }
 
     return (
-        <div>
-            <p>Order by :</p>
-            <div>
+        <div className={style.container}>
+            <h3>Order by :</h3>
+            <div className={style['button-container']}>
                 <label>Name</label>
                 <button value={'ASC'} onClick={handleName}>{"A|Z"}</button>
                 <button value={'DES'} onClick={handleName}>{"Z|A"}</button>
             </div>
-            <div>
+            <div className={style['button-container']}>
                 <label>Attack</label>
                 <button value={'ASC'} onClick={handleAttack}>{"<|>"}</button>
                 <button value={'DES'} onClick={handleAttack}>{">|<"}</button>

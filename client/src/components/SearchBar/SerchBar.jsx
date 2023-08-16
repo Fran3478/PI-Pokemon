@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { getByName, reset } from "../../redux/actions/actions";
 import Filter from "../Filter/Filter";
 import Order from "../Order/order";
+import style from "./SearchBar.module.css"
 
 function SearchBar({onSearch}) {
     const dispatch = useDispatch()
@@ -30,13 +31,22 @@ function SearchBar({onSearch}) {
     }
 
     return (
-        <div>
-            <Order/>
-            <Filter/>
-            <button onClick={handleReset} >Reset</button>
-            <input type="search" placeholder="Pokemon's name..." onChange={handleChange} value={name}/>
-            <button onClick={handleClick} >Search</button>
-            {error ? <p>{error}</p> : null}
+        <div className={style['searchbar-container']}>
+            <div className={style.SearchBar}>
+                <div className={style['filter-order-container']}>
+                    <Order/>
+                    <Filter/>
+                    <button onClick={handleReset} >Reset</button>
+                </div>
+                <div>
+                    <div className={style.searchContainer}>
+                        <input type="search" placeholder="Pokemon's name..." onChange={handleChange} value={name}/>
+                        <button onClick={handleClick} >Search</button>
+                    </div>
+                    {error ? <p className={style.error}>{error}</p> : null}
+                </div>
+                
+            </div>
         </div>
     )
 }

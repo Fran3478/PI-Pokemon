@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getById } from "../../redux/actions/actions";
 import {typeImg} from '../../imgImport/typeImg'
+import style from "./Detail.module.css"
+import Loading from "../Loading/Loading";
 
 function Detail() {
     const {id} = useParams()
@@ -17,14 +19,14 @@ function Detail() {
     }, [dispatch])
 
     return (
-        <div>
+        <div className={style["detail-back"]}>
             {
-                loading ? <p>Loading...</p> :
-                <div>
-                    <div>
-                        {pokemon.image ? <img src={pokemon.image} alt={pokemon.name}/> : null}
+                loading ? <Loading/> :
+                <div className={style["detail-container"]}>
+                    <div className={style["image-container"]}>
+                        {pokemon.image ? <img className={style['pokemon-image']} src={pokemon.image} alt={pokemon.name}/> : null}
                     </div>
-                    <div>
+                    <div className={style['info-container']}>
                         <h1>{pokemon.name}</h1>
                         <div>
                             <p>HP: {pokemon.hp}</p>
@@ -33,9 +35,12 @@ function Detail() {
                             {pokemon.speed ? <p>Speed: {pokemon.speed}</p> : null}
                             {pokemon.height ? <p>Height: {pokemon.height}</p> : null}
                             {pokemon.weight ? <p>Weight: {pokemon.weight}</p> : null}
-                            <div>
-                                <p>Types:</p>
-                                {pokemon.types.map(type => <img key={type} src={typeImg(type)}/>)}
+                            <p>Types:</p>
+                            <div className={style['types-container']}>
+                                <div>
+                                    {pokemon.types.map(type => <img key={type} src={typeImg(type)}/>)}
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
