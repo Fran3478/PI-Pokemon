@@ -15,7 +15,7 @@ async function postPokemonHandler(req, res, next) {
         }
         if(!Number(hp) || !Number(attack) || !Number(defense) || !Number(speed) || !Number(height) || !Number(weight)) { // Se verifica que las propiedades hp, attack, defense, speed, height y weight recibidas sean valores numericos, de lo contrario se asignan status y mensaje apropiado
             err.status = 401
-            err.msg = "Stats must be an Integer"
+            err.msg = "Stats must be a Positive Integer"
             throw err
         }
         // Se consulta tanto a la api como a la db mediante el nombre recibido para verificar que no exista un pokemon con dicho nombre y evitar duplicados
