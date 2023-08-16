@@ -14,16 +14,16 @@ li {
 
 button {
     display: block;
-    background-color: #0074D9; /* Color de fondo azul */
-    color: #fff; /* Color del texto */
+    background-color: #0074D9;
+    color: #fff;
     border: none;
     border-radius: 5px;
-    margin: 0 5px; /* Espaciado entre los botones */
+    margin: 0 5px;
     padding: 8px 16px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 button:hover {
-    background-color: #0056b3; /* Color de fondo azul oscuro al pasar el mouse */
+    background-color: #0056b3;
 }

@@ -79,7 +79,7 @@ input {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1; /* Colocar el Success por encima de los demás elementos */
+    z-index: 1;
 }
 
 .form-success button {

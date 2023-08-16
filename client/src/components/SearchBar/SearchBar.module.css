@@ -8,7 +8,7 @@
 }
 
 .searchbar-container {
-    background-color: #0074D9; /* Fondo azul */
+    background-color: #0074D9;
     width: 99vw;
 }
 
@@ -47,7 +47,7 @@ input {
 }
 
 p {
-    color: #ff4136; /* Color de error rojo */
+    color: #ff4136;
 }
 
 .error {
