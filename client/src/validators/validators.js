@@ -14,7 +14,10 @@ export function validators(element, name) {
         return 'At least one type must be selected!'
     } else if(isNaN(element) && !element) {
         return `The field ${name} can't be empty!`
+    } if(isNaN(element) && element.length > 30) {
+        return `The name shuld be less than 30 characters`
     }
+
 }
 
 export function validateAll(element) {

@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
       unique: true // Se define como true para que no permita nombres duplicados
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     /* Para los atributos hp, attack, defense, height y weight, se realizan validaciones de un minimo de 0
